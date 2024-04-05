@@ -8,9 +8,14 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json()); // Middleware to parse JSON bodies
 
+// Route for serving the homepage (index.html)
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
+
 // Route for serving notes.html
 app.get("/notes", (req, res) => {
-    res.sendFile(path.join(__dirname, "/public/notes.html"));
+    res.sendFile(path.join(__dirname, "notes.html"));
 });
 
 // API route for getting notes
